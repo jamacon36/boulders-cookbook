@@ -1,0 +1,62 @@
+// Container
+$container-max-width: 1280px;
+$container-width: 85%;
+
+// Grid Columns
+$grid-columns: 16;
+
+// Breakpoints
+$breakpoints: (
+  monitor-cinema: (
+    breakpoint: "(min-width: 3200px)",
+  ),
+  monitor-tele: (
+    breakpoint: "(min-width: 1800px)",
+  ),
+  monitor: (
+    breakpoint: "(max-width: 1400px)",
+  ),
+  monitor-small: (
+    breakpoint: "(max-width: 1300px)",
+  ),
+  notebook-large: (
+    breakpoint: "(max-width: 1199px)",
+  ),
+  notebook-small: (
+    breakpoint: "(max-width: 949px)",
+  ),
+  tablet-large: (
+    breakpoint: "(max-width: 849px)",
+  ),
+  tablet-small: (
+    breakpoint: "(max-width: 749px)",
+  ),
+  palm: (
+    breakpoint: "(max-width: 540px)",
+  ),
+  phone: (
+    breakpoint: "(max-width: 420px)",
+  ),
+);
+
+// Fonts
+$body-font: "Open Sans", sans-serif;
+$header-font: "Merriweather", serif;
+
+// Color Palette
+$black: #000000;
+$white: #ffffff;
+$font-black: #1c140d;
+$primary-green: #698d41;
+$background-rose: #f2e9e1;
+$blue-grey-background: #cbdbe0;
+$smoke: rgba($black, 0.33);
+
+// Buttons
+$button-border: none;
+$button-radius: 2px;
+$button-height: 36px;
+$button-padding: 0 2rem;
+$button-background-focus: lighten($primary-green, 4%);
+$button-raised-background: $primary-green;
+$button-floating-background: $primary-green;

@@ -1,0 +1,25 @@
+.hero {
+  height: 500px;
+  overflow: hidden;
+  @include media("tablet-large") {
+    height: auto;
+  }
+  img {
+    max-width: 100%;
+    position: relative;
+    top: -25%;
+    @include media("tablet-large") {
+      top: 0px;
+    }
+  }
+}
+.home-content {
+  h1 {
+    margin-bottom: 10px;
+  }
+  li {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+  }
+}
