@@ -5,7 +5,7 @@ class CustomEndpoint
 {
   function register() {
     $path = $this->callback_arg_is_int ? "/$this->route_name(?:/(?P<$this->callback_arg>\d+))?" : "/$this->route_name(?:/(?P<$this->callback_arg>\w+))?";
-    register_rest_route('trivia/v1', $path, array(
+    register_rest_route('boulders/v1', $path, array(
       'methods' => $this->methods,
       'callback' => $this->callback
     ));

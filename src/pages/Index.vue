@@ -8,32 +8,11 @@
           below to begin.
         </p>
         <ul>
-          <li>
-            <g-link to="/recipes/cocktails">Cocktails</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/appetizers">Appetizers</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/bread">Bread</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/salad">Salad</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/vegetables">Vegetables</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/fish">Fish</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/meat-poultry">Meat & Poultry</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/pasta">Pasta</g-link>
-          </li>
-          <li>
-            <g-link to="/recipes/dessert">Dessert</g-link>
+          <li
+            v-for="({ title, slug, count }, index) of categories"
+            :key="index"
+          >
+            <g-link :to="`/recipes/${slug}`">{{ title }}</g-link>
           </li>
         </ul>
       </div>
@@ -41,14 +20,52 @@
   </Layout>
 </template>
 
+<page-query>
+  query recipeCategories {
+    allWordPressRecipe {
+      edges {
+        node {
+          title
+          slug
+          categories {
+            title
+            slug
+            count
+          }
+        }
+      }
+    }
+  }
+</page-query>
+
 <style lang="scss">
 @import "@/styles/pages/home.scss";
 </style>
 
 <script>
 export default {
+  name: "Home",
   metaInfo: {
     title: "Home",
+  },
+  data() {
+    return {
+      categories: [],
+    };
+  },
+  mounted() {
+    const recipeCategories = this.$page.allWordPressRecipe.edges.map(
+      ({ node }) => node.categories
+    );
+    recipeCategories.forEach((categories) => {
+      categories.forEach(({ title, slug, count }) => {
+        if (
+          !this.categories.find(({ slug: addedSlug }) => addedSlug === slug)
+        ) {
+          this.categories.push({ title, slug, count });
+        }
+      });
+    });
   },
 };
 </script>

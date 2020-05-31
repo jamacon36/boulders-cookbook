@@ -20,7 +20,27 @@ function addStyleResource(rule) {
 
 module.exports = {
   siteName: "The Boulders Cookbook",
-  plugins: [],
+  plugins: [
+    {
+      use: "@gridsome/source-wordpress",
+      options: {
+        baseUrl: "http://18.188.115.69/",
+        apiBase: "wp-json",
+        typeName: "WordPress",
+        perPage: 100,
+        concurrent: 10,
+        customEndpoints: [
+          {
+            typeName: "WordPressMenu",
+            route: "/boulders/v1/menu",
+          },
+        ],
+      },
+    },
+  ],
+  templates: {
+    WordPressRecipe: "/recipe/:slug/",
+  },
   chainWebpack(config) {
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
 
