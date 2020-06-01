@@ -2,6 +2,7 @@
   <Layout>
     <article class="recipe">
       <div class="container">
+        <Breadcrumbs :breadcrumbs="breadcrumbTrail" />
         <header>
           <h1 v-html="recipe.title" />
           <p>By: {{ recipe.author.name }}</p>
@@ -68,6 +69,7 @@
 query Recipe ($path: String!) {
   wordPressRecipe (path: $path) {
     title
+    slug
     author {
       name
     }
@@ -103,6 +105,8 @@ query Recipe ($path: String!) {
 </style>
 
 <script>
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
+
 export default {
   name: "RecipePost",
   data() {
@@ -119,6 +123,17 @@ export default {
       if (!this.recipe.acf.recipeInfo.cookTime) return null;
       return this.makeTime(this.recipe.acf.recipeInfo.cookTime);
     },
+    breadcrumbTrail() {
+      const [{ title, slug }] = this.recipe.categories;
+      return [
+        { name: "Home", link: "/" },
+        { name: title, link: `/recipes/${slug}` },
+        { name: this.recipe.title, link: `/recipe/${this.recipe.slug}` },
+      ];
+    },
+  },
+  components: {
+    Breadcrumbs,
   },
   methods: {
     makeTime(minString) {

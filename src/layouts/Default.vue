@@ -6,16 +6,14 @@
       </header>
       <slot />
     </main>
-    <footer>
+    <footer class="site-footer">
       <div class="container">
-        <div class="grid">
-          <div class="grid-1of1">
-            The Boulders Cookbook
-          </div>
-          <div class="grid-1of3">
-            The Boulders Cookbook
-            <a href="mailto:fennmacon@gmail.com">fennmacon@gmail.com</a>
-          </div>
+        <div class="footer-title">
+          The Boulders Cookbook
+        </div>
+        <div class="footer-contact">
+          By:
+          <a href="mailto:fennmacon@gmail.com">fennmacon@gmail.com</a>
         </div>
       </div>
     </footer>

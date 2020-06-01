@@ -1,0 +1,24 @@
+.breadcrumbs {
+  padding: 10px 0px;
+  ul {
+    li {
+      display: inline-block;
+      padding-left: 0px;
+      a {
+        text-transform: capitalize;
+      }
+      &:before {
+        content: none;
+      }
+      &:not(:first-child) {
+        margin-left: 5px;
+        &:before {
+          content: ">";
+          position: relative;
+          color: $primary-green;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,11 @@
-.hero {
-  height: 250px;
-  overflow: hidden;
-  @include media("tablet-large") {
-    height: auto;
-  }
-  img {
-    max-width: 100%;
-    position: relative;
-    top: -50%;
-    @include media("tablet-large") {
-      top: 0px;
+.recipe-list {
+  .recipe {
+    margin-bottom: 10px;
+    p {
+      margin-bottom: 0px;
+      &:not(.author) {
+        color: $primary-green;
+      }
     }
   }
 }

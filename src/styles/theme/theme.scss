@@ -4,3 +4,26 @@
 @import "buttons";
 @import "sections";
 @import "cards";
+
+.hero {
+  height: 250px;
+  overflow: hidden;
+  @include media("tablet-large") {
+    height: auto;
+  }
+  img {
+    max-width: 100%;
+    position: relative;
+    top: -100%;
+    @include media("tablet-large") {
+      top: 0px;
+    }
+  }
+}
+.site-footer {
+  padding-top: 50px;
+  padding-bottom: 30px;
+  .footer-title {
+    margin-bottom: 10px;
+  }
+}
